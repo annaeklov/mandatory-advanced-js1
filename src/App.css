@@ -43,7 +43,7 @@
   height: 30px;
   width: 200px;
   margin: 5px 5px 2px 5px;
-  border: solid 3px  rgb(37, 84, 204);
+  border: solid 3px  	#3A61A6;
   border-radius: 5px;
 }
 
@@ -55,13 +55,12 @@
 }
 
 .login-inputField{
-  border: solid 1px  rgb(37, 84, 204);
+  border: solid 1px  	#3A61A6;
   padding: 3px 5px;
 }
 
-
 .login-button {
-  border: solid 3px  rgb(37, 84, 204);
+  border: solid 3px  	#3A61A6;
   cursor: pointer;
   color: rgb(13, 52, 148);
   transform: translate(0, 0);
@@ -97,6 +96,8 @@
   background-color: rgba(255, 180, 50, 0.61);
 }
 
+
+
 .login-pic-cont{
   display: flex;
   justify-content: space-around;
@@ -121,8 +122,9 @@
   background-color: rgb(255, 255, 255);
   border-radius: 17px;
   box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.351);
-
 }
+
+
 
 .chatViewTop{
   display: flex;
@@ -140,6 +142,7 @@
 .chatView-h2 p{
   margin: 0;
   font-size: 25px;
+  color: 	#3A61A6;
 }
 
 .chatView-pic-cont{
@@ -154,15 +157,74 @@
 }
 
 .chatViewInner{
-  border: solid 2px rgb(37, 84, 204);
+  border: solid 2px 	#3A61A6;
   width: 95%;
   height: 60%;
   border-radius: 10px;
   overflow-y: auto;
   margin-top: 10px;
-
-
 }
+
+.chatViewInner::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+.chatViewInner::-webkit-scrollbar-thumb {
+  background-color: 	#3A61A6;
+  border-radius: 10px;
+}
+
+.chatView-logoutBtn{
+  border: solid 1px 	#3A61A6;
+  margin-top: 3px;
+  cursor: pointer;
+  color: rgb(13, 52, 148);
+}
+
+.chatView-logoutBtn:hover {
+  transform: translate(0.1em, -0.1em);
+}
+
+/*--CHAT VIEW MESSAGES--*/
+
+.chatView-messageBox{
+  position: relative;
+  width: auto;
+  height: auto;
+	background: #77C3B7;
+  border-radius: 10px;
+  margin: 10px 30px 10px 20px;
+  box-shadow: 4px 4px 4px -2px rgba(0, 0, 0, 0.351);
+}
+
+.chatView-messageBox:after {
+	content: '';
+	position: absolute;
+	top: 70%;
+	border: 14px solid transparent;
+	border-right-color: #77C3B7;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -7px;
+	margin-left: -14px;
+}
+
+.chatView-messageBox-username{
+  color: rgb(29, 50, 85);
+  font-size: 15px;
+  margin: 0px 10px;
+  padding: 5px 0 0 0;
+  font-weight: bold;
+}
+
+.chatView-messageBox-content{
+  font-size: 15px;
+  margin: 5px 5px 0px 5px;
+  padding: 8px;
+  word-wrap: break-word;
+}
+
+
 
 /*--CHAT WRITE--*/
 
@@ -170,7 +232,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: solid 2px rgb(37, 84, 204);
+  border: solid 2px 	#3A61A6;
   width: 95%;
   height: 20%;
   border-radius: 10px;
@@ -192,9 +254,9 @@
 }
 
 .chatWrite-top-sendButton {
-  border: solid 3px  rgb(37, 84, 204);
+  border: solid 3px  	#3A61A6;
   cursor: pointer;
-  color: rgb(13, 52, 148);
+  color: 	#3A61A6;
   transform: translate(0, 0);
   transition-duration: 0.1s;
   outline: none;
