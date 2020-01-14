@@ -13,6 +13,10 @@ class ChatWrite extends React.Component {
   }
 
   handleSendMessage() {
+    if (this.state.content.trim().length == 0) {
+      this.setState({ content: "" });
+      return;
+    }
     this.socket.emit("message", {
       username: this.props.username,
       content: this.state.content

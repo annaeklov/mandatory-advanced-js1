@@ -20,7 +20,7 @@ class ChatView extends React.Component {
     this.handleNewMessage = this.handleNewMessage.bind(this);
   }
 
-// när sidan laddas in, hämtar alla meddelanden, och nya
+  // när sidan laddas in, hämtar alla meddelanden, och nya
   componentDidMount() {
     this.socket.on("messages", data => {
       this.setState({ messageList: data });
@@ -30,7 +30,7 @@ class ChatView extends React.Component {
     this.socket.on("new_message", this.handleNewMessage);
   }
 
-// data är nya meddelandet, this.state.messageList är de gamla meddelandena, punkterna lägger ihop två arrayer till en, som blir till messageList.
+  // data är nya meddelandet, this.state.messageList är de gamla meddelandena, punkterna lägger ihop två arrayer till en, som blir till messageList.
   handleNewMessage(data) {
     this.setState({ messageList: [...this.state.messageList, data] });
     this.handleScrollBar();
@@ -48,14 +48,14 @@ class ChatView extends React.Component {
   render() {
     let renderChat = this.state.messageList.map(message => {
       return (
-        <Emojify>
-          <Linkify>
-            <div className="chatView-messageBox" key={message.id}>
+        <div className="chatView-messageBox" key={message.id}>
+          <Emojify>
+            <Linkify>
               <p className="chatView-messageBox-username">{message.username}</p>
               <p className="chatView-messageBox-content">{message.content}</p>
-            </div>
-          </Linkify>
-        </Emojify>
+            </Linkify>
+          </Emojify>
+        </div>
       );
     });
 

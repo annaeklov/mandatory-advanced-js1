@@ -18,13 +18,15 @@ class Login extends React.Component {
           className="login-inputField"
           type="text"
           required
+          minLength="1"
+          maxLength="12"
           placeholder="Username"
           onChange={this.props.changeFunc} // kommer från en metod i app.js
           value={this.props.inputField} // kommer från en state i app.js
         />
         <p className="login-p">
           Username requires 1-12 characters <br />
-          (åäö is not allowed)
+          (åäö will <b>not</b> work in chat)
         </p>  
         <button className="login-button" onClick={this.props.loginFunc} /* kommer från en metod i app.js */ > 
           Login
