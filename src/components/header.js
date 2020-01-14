@@ -5,7 +5,7 @@ class Header extends React.Component {
 
     return (
       <header className="header">
-        <h1 className="header-h1">chat-app</h1>
+        <h1 className="header-h1">Chat-app</h1>
       </header>
     );
   }

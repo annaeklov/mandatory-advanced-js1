@@ -5,6 +5,7 @@ import picLogin from "../img/picLogin.png";
 import picLogin2 from "../img/picLogin2.png";
 import picLogin3 from "../img/picLogin3.png";
 import Emojify from "react-emojione";
+import Linkify from "react-linkify";
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -13,11 +14,13 @@ class ChatView extends React.Component {
     this.state = {
       messageList: []
     };
+
     this.scrollBar = React.createRef();
     this.handleScrollBar = this.handleScrollBar.bind(this);
     this.handleNewMessage = this.handleNewMessage.bind(this);
   }
 
+// när sidan laddas in, hämtar alla meddelanden, och nya
   componentDidMount() {
     this.socket.on("messages", data => {
       this.setState({ messageList: data });
@@ -27,6 +30,7 @@ class ChatView extends React.Component {
     this.socket.on("new_message", this.handleNewMessage);
   }
 
+// data är nya meddelandet, this.state.messageList är de gamla meddelandena, punkterna lägger ihop två arrayer till en, som blir till messageList.
   handleNewMessage(data) {
     this.setState({ messageList: [...this.state.messageList, data] });
     this.handleScrollBar();
@@ -45,10 +49,12 @@ class ChatView extends React.Component {
     let renderChat = this.state.messageList.map(message => {
       return (
         <Emojify>
-          <div className="chatView-messageBox" key={message.id}>
-            <p className="chatView-messageBox-username">{message.username}</p>
-            <p className="chatView-messageBox-content">{message.content}</p>
-          </div>
+          <Linkify>
+            <div className="chatView-messageBox" key={message.id}>
+              <p className="chatView-messageBox-username">{message.username}</p>
+              <p className="chatView-messageBox-content">{message.content}</p>
+            </div>
+          </Linkify>
         </Emojify>
       );
     });
@@ -66,7 +72,11 @@ class ChatView extends React.Component {
           </div>
         </div>
         <div className="chatViewInner" ref={this.scrollBar}>
-          {this.state.messageList.length ? renderChat : <p className="loading">Loading...</p>}
+          {this.state.messageList.length ? (
+            renderChat
+          ) : (
+            <p className="loading">Loading...</p>
+          )}
         </div>
         <ChatWrite username={this.props.username} />
         <button className="chatView-logoutBtn" onClick={this.props.exitChat}>

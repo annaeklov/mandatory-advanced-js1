@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "", //kunna uppdatera sida och fortfarande vara inloggad
+      username: "",
       inputValue: ""
     };
     this.handleLogin = this.handleLogin.bind(this);
@@ -16,15 +16,18 @@ class App extends React.Component {
     this.handleExitChat = this.handleExitChat.bind(this);
   }
 
+//när man klickar på login-knappen
   handleLogin() {
     this.setState({ username: this.state.inputValue });
     this.setState({ inputValue: "" });
   }
 
+//när det skrivs något i input i login
   handleChange(e) {
     this.setState({ inputValue: e.target.value });
   }
 
+//när man trycker på logout-knappen
   handleExitChat() {
     this.setState({ username: "" });
   }
@@ -32,19 +35,16 @@ class App extends React.Component {
   render() {
     let login = (
       <Login
-        loginFunc={this.handleLogin}
-        changeFunc={this.handleChange}
-        inputField={this.state.inputValue}
-      />
-    );
+        loginFunc={this.handleLogin} //denna som gör att login.js kan använda metoden. i login.js skriver man onClick={this.props.loginFunc} på knappen
+        changeFunc={this.handleChange} // onChange={this.props.changeFunc} i login.js
+        inputField={this.state.inputValue} // value={this.props.inputField} i login.js
+      />);
     let chatView = (
       <ChatView 
-        username={this.state.username} 
-        exitChat={this.handleExitChat} 
-      />
-    );
-
-    let validUsername = /[a-z_-]{1,12}/g.test (this.state.username); // åäö ska INTE funka, det måste dit
+        username={this.state.username} // username={this.props.username} i både chatWrite.js och chatView.js
+        exitChat={this.handleExitChat} // onClick={this.props.exitChat} i chatView på logout-knapp
+        />);
+    let validUsername = /[a-z_-]{1,12}/g.test(this.state.username);
     return (
       <div className="App">
         <Header />
