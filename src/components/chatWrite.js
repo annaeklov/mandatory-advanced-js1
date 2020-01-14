@@ -29,6 +29,7 @@ class ChatWrite extends React.Component {
       <div className="chatWrite">
         <div className="chatWrite-top">
           <textarea
+            required
             className="chatWrite-top-textarea"
             placeholder="Write new message"
             minLength="1"

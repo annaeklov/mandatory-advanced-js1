@@ -10,17 +10,21 @@ class Login extends React.Component {
   }
 
   render() {
+
+    
     return (
       <div className="loginCont">
         <h2 className="login-h2">Please login to join chat</h2>
         <input
+          required
           className="login-inputField"
           type="text"
           placeholder="Username"
           onChange={this.props.changeFunc}
           value={this.props.inputField}
         />
-        <p className="login-p">Username requires 1-12 characters</p>
+        <p className="login-p">Username requires 1-12 characters <br/>
+        (åäö is not allowed)</p>
         <button className="login-button" onClick={this.props.loginFunc}>
           Login
         </button>

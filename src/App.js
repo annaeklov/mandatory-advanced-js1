@@ -4,15 +4,11 @@ import Header from "./components/header.js";
 import Login from "./components/login.js";
 import ChatView from "./components/chatView.js";
 
-import io from "socket.io-client";
-
-var socket = io("http://3.120.96.16:3000");
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      username: "", //kunna uppdatera sida och fortfarande vara inloggad
       inputValue: ""
     };
     this.handleLogin = this.handleLogin.bind(this);
@@ -21,7 +17,6 @@ class App extends React.Component {
   }
 
   handleLogin() {
-    //här ska validering in, regex
     this.setState({ username: this.state.inputValue });
     this.setState({ inputValue: "" });
   }
@@ -43,12 +38,17 @@ class App extends React.Component {
       />
     );
     let chatView = (
-      <ChatView username={this.state.username} exitChat={this.handleExitChat} />
+      <ChatView 
+        username={this.state.username} 
+        exitChat={this.handleExitChat} 
+      />
     );
+
+    let validUsername = /[a-z_-]{1,12}/g.test (this.state.username); // åäö ska INTE funka, det måste dit
     return (
       <div className="App">
         <Header />
-        {this.state.username ? chatView : login}
+        {validUsername ? chatView : login}
       </div>
     );
   }

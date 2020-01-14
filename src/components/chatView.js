@@ -4,6 +4,7 @@ import ChatWrite from "./chatWrite.js";
 import picLogin from "../img/picLogin.png";
 import picLogin2 from "../img/picLogin2.png";
 import picLogin3 from "../img/picLogin3.png";
+import Emojify from "react-emojione";
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -37,15 +38,18 @@ class ChatView extends React.Component {
 
   componentWillUnmount() {
     this.socket.off("new_message", this.handleNewMessage);
+    console.log("UNMOUNT");
   }
 
   render() {
     let renderChat = this.state.messageList.map(message => {
       return (
-        <div className="chatView-messageBox" key={message.id}>
-          <p className="chatView-messageBox-username">{message.username}</p>
-          <p className="chatView-messageBox-content">{message.content}</p>
-        </div>
+        <Emojify>
+          <div className="chatView-messageBox" key={message.id}>
+            <p className="chatView-messageBox-username">{message.username}</p>
+            <p className="chatView-messageBox-content">{message.content}</p>
+          </div>
+        </Emojify>
       );
     });
 
@@ -62,16 +66,15 @@ class ChatView extends React.Component {
           </div>
         </div>
         <div className="chatViewInner" ref={this.scrollBar}>
-          {this.state.messageList.length ? renderChat :
-            <p className="loading">Loading...</p>}
+          {this.state.messageList.length ? renderChat : <p className="loading">Loading...</p>}
         </div>
         <ChatWrite username={this.props.username} />
-        <button className ="chatView-logoutBtn" onClick={this.props.exitChat}>Logout</button>
+        <button className="chatView-logoutBtn" onClick={this.props.exitChat}>
+          Logout
+        </button>
       </div>
     );
   }
 }
 
 export default ChatView;
-
-
