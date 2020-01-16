@@ -6,7 +6,6 @@ import picLogin3 from "../img/picLogin3.png";
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    // props finns för att kunna ta emot state från föräldrar eller att skicka state neråt till barn. Just denna constructor har inga state pga det finns inget som ska ändras på, det ligger i app.js
   }
 
   render() {
@@ -21,14 +20,13 @@ class Login extends React.Component {
           minLength="1"
           maxLength="12"
           placeholder="Username"
-          onChange={this.props.changeFunc} // kommer från en metod i app.js
-          value={this.props.inputField} // kommer från en state i app.js
+          onChange={this.props.changeFunc}
+          value={this.props.inputField}
         />
         <p className="login-p">
-          Username requires 1-12 characters <br />
-          (åäö will <b>not</b> work in chat)
+          Username requires 1-12 characters
         </p>  
-        <button className="login-button" onClick={this.props.loginFunc} /* kommer från en metod i app.js */ > 
+        <button className="login-button" onClick={this.props.loginFunc}> 
           Login
         </button> 
         <div className="login-pic-cont">

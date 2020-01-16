@@ -50,7 +50,7 @@ class ChatWrite extends React.Component {
         </div>
         <div className="chatWrite-bottom">
           <p className="chatWrite-bottom-p">
-            New message requires 1-200 characters
+            A new message requires 1-200 characters
           </p>
         </div>
       </div>
@@ -60,4 +60,3 @@ class ChatWrite extends React.Component {
 
 export default ChatWrite;
 
-/*  */

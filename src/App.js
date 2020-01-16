@@ -18,8 +18,9 @@ class App extends React.Component {
 
   //när man klickar på login-knappen
   handleLogin() {
-    if (this.state.inputValue.trim().length == 0) {
+    if (this.state.inputValue.trim().length === 0) {
       this.setState({ inputValue: "" });
+      console.log(this.state.inputValue.trim().length)
       return;
     }
     this.setState({ username: this.state.inputValue });
